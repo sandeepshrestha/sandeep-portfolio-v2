@@ -83,3 +83,35 @@
     content: "...";
   }
 }
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+}
+
+@keyframes sparkle-slow {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-30px) scale(1.2);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.animate-sparkle-slow {
+  animation: sparkle-slow 4s ease-in-out infinite;
+}

@@ -38,11 +38,11 @@ const ChatInput = ({
 
   return (
     <footer
-      className={`fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-zinc-950 via-zinc-950/95 backdrop-blur-xl pb-6 pt-8 transition-all duration-700 ${
+      className={`fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-zinc-950 via-zinc-950/95 backdrop-blur-xl pb-4 sm:pb-6 pt-6 sm:pt-8 transition-all duration-700 ${
         hasStarted ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
     >
-      <div className="max-w-3xl mx-auto px-6 space-y-4">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 space-y-3 sm:space-y-4">
         {/* Suggestion Chips */}
         {messages[messages.length - 1]?.role === "bot" && !isTyping && (
           <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
