@@ -9,9 +9,30 @@
     @apply bg-zinc-950 text-zinc-100 antialiased;
     font-family: 'Inter', system-ui, sans-serif;
   }
+  
+  * {
+    @apply selection:bg-white selection:text-black;
+  }
 }
 
 @layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-zinc-700 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-600;
+  }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -24,6 +45,11 @@
   .animate-toast-in {
     animation: toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+  
+  .loading-text::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+  }
 }
 
 @keyframes toast-in {
@@ -35,4 +61,10 @@
     opacity: 1;
     transform: translate(-50%, 0);
   }
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
 }
