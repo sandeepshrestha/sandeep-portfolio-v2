@@ -1,16 +1,58 @@
-# React + Vite
+# Sandeep Shrestha - Interactive Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive portfolio website featuring a conversational AI-style interface. Built with **React** and **Tailwind CSS**, this project offers a unique way to explore my skills, projects, and experience through a chat-like experience, moving away from traditional static portfolio designs.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **💬 Interactive Chat Interface**: Engage with a portfolio bot to learn about my background, skills, and projects in a conversational manner.
+- **🎨 Cyber-Minimalism Design**: A sleek, modern aesthetic featuring glassmorphism, subtle gradients, and smooth animations.
+- **🌓 Dark/Light Mode**: Fully responsive theme toggling with persistent state.
+- **⚡ High Performance**: Built with Vite for lightning-fast loading and optimal performance.
+- **📱 Fully Responsive**: Optimized for seamless experience across desktop, tablet, and mobile devices.
+- **🧩 Dynamic Content**: Rich displays for projects, work experience, and technical skills.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Linting**: ESLint
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Follow these steps to run the project locally:
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/sandeepshrestha/sandeep-portfolio-v2.git
+    cd gemini-portfolio
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the development server**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open in browser**
+    Visit `http://localhost:5173` to view the application.
+
+## 📂 Project Structure
+
+```
+src/
+├── components/      # UI Components (ChatInput, ChatMessage, Header, etc.)
+├── data/           # Static data for portfolio (projects, skills, etc.)
+├── utils/          # Helper functions (chat logic, etc.)
+├── App.jsx         # Main application component
+└── main.jsx        # Entry point
+```
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
