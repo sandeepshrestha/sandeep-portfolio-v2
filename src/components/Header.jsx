@@ -1,5 +1,5 @@
 import React from "react";
-import { Terminal } from "lucide-react";
+import { MousePointer } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { Button } from "./ui/Button";
 
@@ -16,8 +16,8 @@ const Header = ({ hasStarted }) => {
           className="flex items-center gap-2 hover:bg-transparent p-0 h-auto text-muted-foreground hover:text-foreground transition-colors"
           onClick={() => window.location.reload()}
         >
-          <Terminal size={18} />
-          <span className="font-mono text-sm">sandeep.dev</span>
+          <MousePointer size={18} />
+          <span className="font-mono text-sm">sandeep.design</span>
         </Button>
         <ThemeToggle />
       </div>

@@ -97,8 +97,11 @@ const ChatInput = ({
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Type a message..."
-              className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-sm sm:text-base h-auto p-0"
+              placeholder={placeholders[placeholderIndex]}
+              style={{
+                "--placeholder-opacity": fadeIn ? "1" : "0",
+              }}
+              className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-sm sm:text-base h-auto p-0 placeholder:transition-opacity placeholder:duration-300"
               disabled={isLoading}
             />
             <Button

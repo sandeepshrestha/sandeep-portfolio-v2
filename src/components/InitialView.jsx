@@ -16,10 +16,14 @@ const placeholders = [
 ];
 
 const SUGGESTIONS = [
-  { label: "Tell me about yourself", text: "Tell me about yourself" },
-  { label: "Show me projects", text: "Show me projects" },
-  { label: "Experience", text: "Experience" },
-  { label: "Contact info", text: "Contact info" },
+  {
+    label: "Tell me about yourself",
+    text: "Tell me about yourself",
+    icon: User,
+  },
+  { label: "Show me projects", text: "Show me projects", icon: Code },
+  { label: "Experience", text: "Experience", icon: Briefcase },
+  { label: "Contact info", text: "Contact info", icon: Mail },
 ];
 
 const InitialView = ({
@@ -112,6 +116,7 @@ const InitialView = ({
                 }`}
               >
                 <SuggestionChip
+                  icon={suggestion.icon}
                   label={suggestion.label}
                   onClick={() => handleSendMessage(suggestion.text)}
                 />

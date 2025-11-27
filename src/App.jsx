@@ -7,10 +7,11 @@ import InitialView from "./components/InitialView";
 import ChatInput from "./components/ChatInput";
 import ChatMessage from "./components/ChatMessage";
 import BottomGlow from "./components/BottomGlow";
-import { ThemeProvider } from "./components/ThemeProvider";
+import { useTheme } from "./components/ThemeProvider";
 import { Avatar, AvatarFallback } from "./components/ui/Avatar";
 
 export default function App() {
+  const { setTheme } = useTheme();
   const [messages, setMessages] = useState([
     { role: "system", content: "Interface initialized", type: "status" },
     { role: "bot", content: PORTFOLIO_DATA.intro, type: "text" },
@@ -171,6 +172,24 @@ export default function App() {
       return;
     }
 
+    // Theme commands
+    const lowerText = text.toLowerCase().trim();
+    if (["light", "dark", "system"].includes(lowerText)) {
+      setTheme(lowerText);
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "bot",
+            content: `Switched to ${lowerText} mode`,
+            type: "text",
+          },
+        ]);
+        setIsTyping(false);
+      }, 500);
+      return;
+    }
+
     // Generate response(s)
     const responses = generateResponse(text.toLowerCase());
 
@@ -203,50 +222,48 @@ export default function App() {
   };
 
   return (
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20 selection:text-primary transition-colors duration-300">
-        <Header hasStarted={hasStarted} />
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20 selection:text-primary transition-colors duration-300">
+      <Header hasStarted={hasStarted} />
 
-        {!hasStarted ? (
-          <InitialView
+      {!hasStarted ? (
+        <InitialView
+          hasStarted={hasStarted}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          handleSendMessage={handleSendMessage}
+        />
+      ) : (
+        <div className="flex flex-col min-h-screen pt-16 pb-32 sm:pb-40">
+          <div className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6">
+            <div className="space-y-6 py-6">
+              {messages.map((msg, idx) => (
+                <div key={idx} className="w-full">
+                  {/* Avatar */}
+
+                  <ChatMessage msg={msg} />
+                </div>
+              ))}
+              {isTyping && (
+                <div className="flex items-center gap-2 text-muted-foreground text-sm font-mono animate-pulse pl-4">
+                  <span className="w-2 h-2 rounded-full bg-primary/50" />
+                  Thinking...
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+          </div>
+
+          <ChatInput
             hasStarted={hasStarted}
             inputValue={inputValue}
             setInputValue={setInputValue}
             handleSendMessage={handleSendMessage}
+            isTyping={isTyping}
+            messages={messages}
           />
-        ) : (
-          <div className="flex flex-col min-h-screen pt-16 pb-32 sm:pb-40">
-            <div className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6">
-              <div className="space-y-6 py-6">
-                {messages.map((msg, idx) => (
-                  <div key={idx} className="w-full">
-                    {/* Avatar */}
-
-                    <ChatMessage msg={msg} />
-                  </div>
-                ))}
-                {isTyping && (
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm font-mono animate-pulse pl-4">
-                    <span className="w-2 h-2 rounded-full bg-primary/50" />
-                    Thinking...
-                  </div>
-                )}
-                <div ref={messagesEndRef} />
-              </div>
-            </div>
-
-            <ChatInput
-              hasStarted={hasStarted}
-              inputValue={inputValue}
-              setInputValue={setInputValue}
-              handleSendMessage={handleSendMessage}
-              isTyping={isTyping}
-              messages={messages}
-            />
-          </div>
-        )}
-        <BottomGlow />
-      </div>
-    </ThemeProvider>
+        </div>
+      )}
+      {/* <BottomGlow /> */}
+    </div>
   );
 }
