@@ -1,20 +1,18 @@
 import React from 'react';
 import { Code } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
 
 const Header = ({ hasStarted }) => {
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 border-b border-zinc-200 dark:border-zinc-800/50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl transition-all duration-500 ${hasStarted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-xl transition-all duration-500 ${hasStarted ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
       <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-lg shadow-emerald-500/50" />
-          <span className="font-mono text-sm text-zinc-600 dark:text-zinc-400">
-            Sandeep-Shrestha<span className="text-zinc-400 dark:text-zinc-600">.portfolio</span>
+          <span className="font-light text-sm text-zinc-400">
+            Sandeep Shrestha<span className="text-zinc-600">.portfolio</span>
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <ThemeToggle />
-          <a href="#" className="text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors">
+          <a href="#" className="text-zinc-500 hover:text-zinc-300 transition-colors">
             <Code size={18} />
           </a>
         </div>
