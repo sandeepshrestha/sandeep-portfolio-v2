@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Terminal, Send, User, Briefcase, Cpu, Code, Mail } from "lucide-react";
-import SuggestionChip from "./SuggestionChip";
+import { Send, Terminal, User, Briefcase, Cpu, Code, Mail } from "lucide-react";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import SuggestionChip from "./ui/SuggestionChip";
 
 const placeholders = [
   "Ask about experience, skills, or projects...",
@@ -18,8 +20,10 @@ const ChatInput = ({
   setInputValue,
   handleSendMessage,
   isTyping,
+  isLoading,
   messages,
 }) => {
+  // Placeholder rotation logic removed as per instruction
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
 
@@ -38,7 +42,7 @@ const ChatInput = ({
 
   return (
     <footer
-      className={`fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-zinc-950 via-zinc-950/95 backdrop-blur-xl pb-4 sm:pb-6 pt-6 sm:pt-8 transition-all duration-700 ${
+      className={`fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-t from-background via-background/95 backdrop-blur-xl pb-4 sm:pb-6 pt-6 sm:pt-8 transition-all duration-700 ${
         hasStarted ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
     >
@@ -84,34 +88,32 @@ const ChatInput = ({
           }}
           className="relative group"
         >
-          <div className="flex items-center gap-3 bg-zinc-900 rounded-full p-2 pl-3 pr-3 border border-zinc-800 shadow-lg hover:border-zinc-600 transition-all">
-            <Terminal size={18} className="text-zinc-500 flex-shrink-0" />
-            <input
+          <div className="relative flex items-center bg-secondary/50 backdrop-blur-md border border-border rounded-full shadow-2xl p-1.5 sm:p-2 transition-all duration-300 hover:border-zinc-500/50 hover:shadow-zinc-500/10 hover:bg-secondary/80">
+            <Terminal
+              size={18}
+              className="ml-3 text-muted-foreground mr-3 shrink-0"
+            />
+            <Input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder={placeholders[placeholderIndex]}
-              style={{
-                "--placeholder-opacity": fadeIn ? "1" : "0",
-              }}
-              className="flex-1 bg-transparent text-zinc-100 focus:outline-none text-sm min-w-0 font-light"
+              placeholder="Type a message..."
+              className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-sm sm:text-base h-auto p-0"
+              disabled={isLoading}
             />
-            <button
+            <Button
               type="submit"
-              disabled={!inputValue.trim() || isTyping}
-              className="bg-white text-black px-6 py-2.5 rounded-full font-medium text-sm hover:bg-zinc-200 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              size="icon"
+              disabled={!inputValue.trim() || isLoading}
+              className="ml-2 rounded-full w-8 h-8 sm:w-10 sm:h-10 shrink-0"
             >
-              {isTyping ? (
-                <span className="loading-text">Thinking</span>
-              ) : (
-                <Send size={16} />
-              )}
-            </button>
+              <Send size={14} className="sm:w-4 sm:h-4" />
+            </Button>
           </div>
         </form>
 
         <div className="text-center">
-          <p className="text-[10px] text-zinc-600 font-mono">
+          <p className="text-[10px] text-muted-foreground font-mono">
             Portfolio Interface • Designed by Sandeep Shrestha
           </p>
         </div>

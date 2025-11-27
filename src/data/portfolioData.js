@@ -5,8 +5,13 @@ export const PORTFOLIO_DATA = {
     role: "Senior Product UI/UX Designer | Founder",
     location: "Kathmandu, Nepal",
     avatar: "/profile.png",
-    summary:
+    summary: [
       "Senior UX Designer and Product Designer with expertise in strategic thinking, data-driven insights, and solving complex problems. Passionate about building impactful, user-centered design solutions and mentoring the next generation of UI/UX talent.",
+      "I bridge the gap between complex data and intuitive design. As a Senior Product Designer and Founder, I focus on creating scalable design systems and strategic user experiences that drive business growth.",
+      "With a background in both design and development, I craft digital experiences that are not only visually stunning but also technically feasible and highly functional. I love turning chaotic requirements into clean, elegant solutions.",
+      "From Kathmandu to the global stage, I've spent the last 6+ years designing for everything from automotive UX to enterprise SaaS. My goal is simple: make technology feel human.",
+      "I'm a problem solver at heart. Whether it's a blockchain game or a healthcare CRM, I use design thinking to simplify workflows and delight users. When I'm not designing, I'm mentoring the next wave of creative talent.",
+    ],
   },
   experience: [
     {

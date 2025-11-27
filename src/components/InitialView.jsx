@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Terminal, Send, User, Code, Briefcase, Mail } from "lucide-react";
-import SuggestionChip from "./SuggestionChip";
+
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import SuggestionChip from "./ui/SuggestionChip";
 
 const placeholders = [
   "Ask me anything...",
@@ -10,6 +13,13 @@ const placeholders = [
   "What are your skills?",
   "How can I contact you?",
   "Type 'clear' to reset",
+];
+
+const SUGGESTIONS = [
+  { label: "Tell me about yourself", text: "Tell me about yourself" },
+  { label: "Show me projects", text: "Show me projects" },
+  { label: "Experience", text: "Experience" },
+  { label: "Contact info", text: "Contact info" },
 ];
 
 const InitialView = ({
@@ -44,10 +54,10 @@ const InitialView = ({
     >
       <div className="max-w-2xl w-full space-y-6 sm:space-y-8 text-center relative z-10">
         <div className="space-y-3 sm:space-y-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tighter text-white mb-4 sm:mb-8 opacity-90 select-none">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tighter text-foreground mb-4 sm:mb-8 opacity-90 select-none">
             Sandeep Shrestha
           </h1>
-          <p className="text-base sm:text-lg text-zinc-600 max-w-lg mx-auto leading-relaxed font-light px-4 sm:px-0">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto leading-relaxed font-light px-4 sm:px-0">
             Product UI/UX Designer & User Interface Developer crafting digital
             experiences.
           </p>
@@ -61,54 +71,52 @@ const InitialView = ({
             }}
             className="relative group"
           >
-            <div className="w-full bg-zinc-900 border border-zinc-800 rounded-full p-1.5 sm:p-2 pl-2 sm:pl-3 flex items-center shadow-2xl hover:border-zinc-600 transition-all duration-300 cursor-text">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 group-hover:bg-zinc-700 group-hover:text-white transition-colors shrink-0">
+            <div className="w-full bg-secondary/30 border border-border rounded-full p-1.5 sm:p-2 pl-2 sm:pl-3 flex items-center shadow-2xl hover:border-zinc-500/50 transition-all duration-300 cursor-text">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary flex items-center justify-center text-muted-foreground group-hover:bg-secondary/80 group-hover:text-foreground transition-colors shrink-0">
                 <Terminal size={18} className="sm:w-5 sm:h-5" />
               </div>
 
-              <input
-                type="text"
+              <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder={placeholders[placeholderIndex]}
                 style={{
                   "--placeholder-opacity": fadeIn ? "1" : "0",
                 }}
-                className="flex-1 ml-3 sm:ml-4 bg-transparent text-zinc-100 focus:outline-none text-sm sm:text-base min-w-0 font-light placeholder:transition-opacity placeholder:duration-300"
+                className="flex-1 ml-3 sm:ml-4 bg-transparent border-none shadow-none focus-visible:ring-0 text-foreground text-sm sm:text-base min-w-0 font-light placeholder:transition-opacity placeholder:duration-300 placeholder:text-muted-foreground h-auto p-0"
                 autoFocus
               />
 
-              <button
+              <Button
                 type="submit"
+                size="icon"
                 disabled={!inputValue.trim()}
-                className="mr-1.5 sm:mr-2 bg-white text-black px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium text-xs sm:text-sm hover:bg-zinc-200 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg"
+                className="mr-1.5 sm:mr-2 rounded-full w-8 h-8 sm:w-10 sm:h-10 shrink-0"
               >
                 <Send size={14} className="sm:w-4 sm:h-4" />
-              </button>
+              </Button>
             </div>
           </form>
 
           <div className="flex flex-wrap justify-center gap-2">
-            <SuggestionChip
-              label="Tell me about yourself"
-              icon={User}
-              onClick={() => handleSendMessage("Tell me about yourself")}
-            />
-            <SuggestionChip
-              label="Show me projects"
-              icon={Code}
-              onClick={() => handleSendMessage("Show me projects")}
-            />
-            <SuggestionChip
-              label="Experience"
-              icon={Briefcase}
-              onClick={() => handleSendMessage("Experience")}
-            />
-            <SuggestionChip
-              label="Contact info"
-              icon={Mail}
-              onClick={() => handleSendMessage("Contact info")}
-            />
+            {SUGGESTIONS.map((suggestion, index) => (
+              <div
+                key={index}
+                style={{
+                  animationDelay: `${index * 100 + 500}ms`,
+                }}
+                className={`transition-all duration-300 ${
+                  hasStarted
+                    ? "opacity-0 translate-y-4 pointer-events-none"
+                    : "opacity-100 translate-y-0 animate-fade-in-up"
+                }`}
+              >
+                <SuggestionChip
+                  label={suggestion.label}
+                  onClick={() => handleSendMessage(suggestion.text)}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
