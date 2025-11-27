@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,9 +7,9 @@
 @layer base {
   body {
     @apply bg-zinc-950 text-zinc-100 antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
   }
-  
+
   * {
     @apply selection:bg-white selection:text-black;
   }
@@ -20,15 +20,15 @@
     width: 6px;
     height: 6px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-zinc-700 rounded-full;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-zinc-600;
   }
@@ -36,18 +36,25 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
+  /* Placeholder fade animation */
+  input::placeholder {
+    opacity: var(--placeholder-opacity, 0.5);
+    color: rgb(113 113 122);
+    transition: opacity 300ms ease-in-out;
+  }
+
   .animate-toast-in {
     animation: toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
-  
+
   .loading-text::after {
-    content: '...';
+    content: "...";
     animation: dots 1.5s steps(4, end) infinite;
   }
 }
@@ -64,7 +71,15 @@
 }
 
 @keyframes dots {
-  0%, 20% { content: '.'; }
-  40% { content: '..'; }
-  60%, 100% { content: '...'; }
+  0%,
+  20% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  60%,
+  100% {
+    content: "...";
+  }
 }

@@ -71,6 +71,8 @@ export const PORTFOLIO_DATA = {
       "TypeScript",
       "React.js",
       "Tailwind CSS",
+      "Framer",
+      "Webflow",
     ],
     process: [
       "Discovery",
