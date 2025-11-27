@@ -11,7 +11,7 @@ import { useTheme } from "./components/ThemeProvider";
 import { Avatar, AvatarFallback } from "./components/ui/Avatar";
 
 export default function App() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [messages, setMessages] = useState([
     { role: "system", content: "Interface initialized", type: "status" },
     { role: "bot", content: PORTFOLIO_DATA.intro, type: "text" },
@@ -231,6 +231,7 @@ export default function App() {
           inputValue={inputValue}
           setInputValue={setInputValue}
           handleSendMessage={handleSendMessage}
+          theme={theme}
         />
       ) : (
         <div className="flex flex-col min-h-screen pt-16 pb-32 sm:pb-40">

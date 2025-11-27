@@ -26,6 +26,9 @@ const SUGGESTIONS = [
   { label: "Contact info", text: "Contact info", icon: Mail },
 ];
 
+import bgVideoDark from "../assets/bg-dark.mp4";
+import bgVideoLight from "../assets/bg-light.mp4";
+
 const InitialView = ({
   hasStarted,
   inputValue,
@@ -56,6 +59,25 @@ const InitialView = ({
           : "opacity-100 scale-100"
       }`}
     >
+      {/* Video Backgrounds */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-10 dark:hidden transition-opacity duration-500"
+      >
+        <source src={bgVideoLight} type="video/mp4" />
+      </video>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-10 hidden dark:block transition-opacity duration-500"
+      >
+        <source src={bgVideoDark} type="video/mp4" />
+      </video>
       <div className="max-w-2xl w-full space-y-6 sm:space-y-8 text-center relative z-10">
         <div className="space-y-3 sm:space-y-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tighter text-foreground mb-4 sm:mb-8 opacity-90 select-none">
