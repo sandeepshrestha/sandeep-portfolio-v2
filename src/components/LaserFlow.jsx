@@ -222,7 +222,8 @@ void mainImage(out vec4 fc,in vec2 frag){
     float dith=(h21(frag)-0.5)*(DITHER_STRENGTH/255.0);
     float tone=g(LF+w);
     vec3 col=tone*uColor+dith;
-    float alpha=clamp(g(L+w*0.6)+dith*0.6,0.0,1.0);
+    // Boost alpha significantly to ensure visibility on light backgrounds
+    float alpha=clamp((LF+w)*3.0, 0.0, 1.0);
     float nxE=abs((frag.x-C.x)*invW),xF=pow(clamp(1.0-smoothstep(EDGE_X0,EDGE_X1,nxE),0.0,1.0),EDGE_X_GAMMA);
     float scene=LF+max(0.0,w)*0.5,hi=smoothstep(EDGE_LUMA_T0,EDGE_LUMA_T1,scene);
     float eM=mix(xF,1.0,hi);
@@ -326,8 +327,8 @@ export const LaserFlow = ({
       iMouse: { value: new THREE.Vector4(0, 0, 0, 0) },
       uWispDensity: { value: wispDensity },
       uTiltScale: { value: mouseTiltStrength },
-      uFlowTime: { value: 0 },
-      uFogTime: { value: 0 },
+      uFlowTime: { value: 10.0 },
+      uFogTime: { value: 10.0 },
       uBeamXFrac: { value: horizontalBeamOffset },
       uBeamYFrac: { value: verticalBeamOffset },
       uFlowSpeed: { value: flowSpeed },
@@ -342,7 +343,7 @@ export const LaserFlow = ({
       uFalloffStart: { value: falloffStart },
       uFogFallSpeed: { value: fogFallSpeed },
       uColor: { value: new THREE.Vector3(1, 1, 1) },
-      uFade: { value: hasFadedRef.current ? 1 : 0 }
+      uFade: { value: 1.0 }
     };
     uniformsRef.current = uniforms;
 
@@ -350,10 +351,10 @@ export const LaserFlow = ({
       vertexShader: VERT,
       fragmentShader: FRAG,
       uniforms,
-      transparent: false,
+      transparent: true,
       depthTest: false,
       depthWrite: false,
-      blending: THREE.NormalBlending
+      blending: THREE.AdditiveBlending
     });
 
     const mesh = new THREE.Mesh(geometry, material);
@@ -498,12 +499,13 @@ export const LaserFlow = ({
       uniforms.uFlowTime.value += cdt;
       uniforms.uFogTime.value += cdt;
 
-      if (!hasFadedRef.current) {
-        const fadeDur = 1.0;
-        fade = Math.min(1, fade + cdt / fadeDur);
-        uniforms.uFade.value = fade;
-        if (fade >= 1) hasFadedRef.current = true;
-      }
+      // if (!hasFadedRef.current) {
+      //   const fadeDur = 1.0;
+      //   fade = Math.min(1, fade + cdt / fadeDur);
+      //   uniforms.uFade.value = fade;
+      //   if (fade >= 1) hasFadedRef.current = true;
+      // }
+      uniforms.uFade.value = 1.0;
 
       const tau = Math.max(1e-3, mouseSmoothTime);
       const alpha = 1 - Math.exp(-cdt / tau);

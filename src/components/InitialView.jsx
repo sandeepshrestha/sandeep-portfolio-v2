@@ -8,7 +8,7 @@ const InitialView = ({ hasStarted, inputValue, setInputValue, handleSendMessage 
     <div className={`flex-1 flex flex-col items-center justify-center p-6 transition-all duration-700 absolute inset-0 z-40 ${hasStarted ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'}`}>
       
       {/* LaserFlow Background */}
-      <div className="absolute inset-0 overflow-hidden -z-10 bg-gray-50 dark:bg-zinc-950">
+      <div className="absolute inset-0 overflow-hidden -z-10">
         <LaserFlow 
           color="#6366f1" 
           flowSpeed={0.4} 

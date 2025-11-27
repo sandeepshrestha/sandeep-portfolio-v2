@@ -5,14 +5,10 @@ const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Check initial preference or system setting
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-    }
+    // Always force dark mode on initial load
+    setIsDark(true);
+    document.documentElement.classList.add('dark');
+    localStorage.theme = 'dark';
   }, []);
 
   const toggleTheme = () => {
