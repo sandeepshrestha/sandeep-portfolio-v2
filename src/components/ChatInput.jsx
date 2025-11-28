@@ -88,29 +88,32 @@ const ChatInput = ({
           }}
           className="relative group"
         >
-          <div className="relative flex items-center bg-secondary/50 backdrop-blur-md border border-border rounded-full shadow-2xl p-1.5 sm:p-2 transition-all duration-300 hover:border-zinc-500/50 hover:shadow-zinc-500/10 hover:bg-secondary/80">
-            <Terminal
-              size={18}
-              className="ml-3 text-muted-foreground mr-3 shrink-0"
-            />
+          <div className="relative flex items-center w-full bg-background/60 backdrop-blur-xl border border-border/40 rounded-full shadow-lg ring-1 ring-black/5 p-1.5 transition-all duration-300 focus-within:bg-background/80 focus-within:shadow-xl hover:border-border/80 hover:ring-border/20">
+            {/* 1. Icon Wrapped for Symmetry (matches button size) */}
+            <div className="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-secondary/50 text-muted-foreground ring-1 ring-inset ring-black/5">
+              <Terminal size={18} strokeWidth={2} />
+            </div>
+
             <Input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder={placeholders[placeholderIndex]}
-              style={{
-                "--placeholder-opacity": fadeIn ? "1" : "0",
-              }}
-              className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-sm sm:text-base h-auto p-0 placeholder:transition-opacity placeholder:duration-300"
+              style={{ "--placeholder-opacity": fadeIn ? "1" : "0" }}
+              // 2. Improved Text Spacing & Typography
+              className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 px-4 text-base text-foreground placeholder:text-muted-foreground/70 h-full py-2"
               disabled={isLoading}
+              autoFocus
             />
+
             <Button
               type="submit"
               size="icon"
               disabled={!inputValue.trim() || isLoading}
-              className="ml-2 rounded-full w-8 h-8 sm:w-10 sm:h-10 shrink-0"
+              // 3. Consistent Button Sizing & Interactive States
+              className="shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:scale-100"
             >
-              <Send size={14} className="sm:w-4 sm:h-4" />
+              <Send size={16} className={inputValue.trim() ? "ml-0.5" : ""} />
             </Button>
           </div>
         </form>

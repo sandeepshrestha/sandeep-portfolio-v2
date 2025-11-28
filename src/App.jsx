@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import InitialView from "./components/InitialView";
 import ChatInput from "./components/ChatInput";
 import ChatMessage from "./components/ChatMessage";
-import BottomGlow from "./components/BottomGlow";
 import { useTheme } from "./components/ThemeProvider";
 import { Avatar, AvatarFallback } from "./components/ui/Avatar";
 
@@ -264,7 +263,6 @@ export default function App() {
           />
         </div>
       )}
-      {/* <BottomGlow /> */}
     </div>
   );
 }
