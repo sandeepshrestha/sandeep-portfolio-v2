@@ -23,7 +23,6 @@ const SUGGESTIONS = [
   { label: "Show me projects", text: "Show me projects", icon: Code },
   { label: "Experience", text: "Experience", icon: Briefcase },
   { label: "Contact info", text: "Contact info", icon: Mail },
-  { label: "Download CV", text: "Download CV", icon: Download },
 ];
 
 import bgVideoDark from "../assets/bg-dark.mp4";

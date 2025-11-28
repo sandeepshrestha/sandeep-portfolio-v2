@@ -76,11 +76,6 @@ const ChatInput = ({
               icon={Mail}
               onClick={() => handleSendMessage("How can I contact him?")}
             />
-            <SuggestionChip
-              label="Download CV"
-              icon={Download}
-              onClick={() => handleSendMessage("Download CV")}
-            />
           </div>
         )}
 

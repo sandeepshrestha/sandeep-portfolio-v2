@@ -64,11 +64,11 @@ export const useChat = () => {
     }
 
     // Resume / CV
-    if (query.match(/\b(resume|cv|download|pdf|document)\b/)) {
-      responses.push({ type: "text", content: getRandomResponse("resume") });
-      responses.push({ type: "download", content: PORTFOLIO_DATA.resume });
-      return responses;
-    }
+    // if (query.match(/\b(resume|cv|download|pdf|document)\b/)) {
+    //   responses.push({ type: "text", content: getRandomResponse("resume") });
+    //   responses.push({ type: "download", content: PORTFOLIO_DATA.resume });
+    //   return responses;
+    // }
 
     // Data Queries
     if (
