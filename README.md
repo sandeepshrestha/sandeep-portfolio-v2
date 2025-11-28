@@ -24,17 +24,20 @@ A modern, interactive portfolio website featuring a conversational AI-style inte
 Follow these steps to run the project locally:
 
 1.  **Clone the repository**
+
     ```bash
     git clone https://github.com/sandeepshrestha/sandeep-portfolio-v2.git
-    cd gemini-portfolio
+    cd <YOUR-PROJECT-NAME>
     ```
 
 2.  **Install dependencies**
+
     ```bash
     npm install
     ```
 
 3.  **Start the development server**
+
     ```bash
     npm run dev
     ```
