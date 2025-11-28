@@ -214,6 +214,9 @@ export const CONVERSATIONAL_PHRASES = {
     "Hey there! Let's dive into Sandeep's world of product design.",
     "Good to see you! What aspect of Sandeep's work interests you most?",
     "Hello! Whether it's UX, strategy, or code—I've got you covered.",
+    "Hi! I'm Sandeep's virtual assistant. Ask me anything about his work!",
+    "Welcome aboard! Ready to see some cool designs?",
+    "Hey! I can tell you all about Sandeep's projects and skills. Where should we start?",
   ],
 
   unknown: [
@@ -227,6 +230,8 @@ export const CONVERSATIONAL_PHRASES = {
     "Lost me there! Let's stick to *work*, *skills*, *projects*, or *contact*.",
     "Interesting question, but I'm here for portfolio talk. Ask about *experience* or *projects*?",
     "My expertise is Sandeep's work. How about his *background*, *projects*, or how to *reach him*?",
+    "I'm still learning! But I know a lot about Sandeep's *design process* and *case studies*.",
+    "Can you rephrase that? I'm eager to tell you about Sandeep's *career*.",
   ],
 
   experience: [
@@ -242,6 +247,8 @@ export const CONVERSATIONAL_PHRASES = {
     "Buckle up—here's where Sandeep has been making waves:",
     "From legal tech to loyalty apps, here's his professional story:",
     "Ready to see his track record? Here we go:",
+    "Sandeep's career is a mix of leadership and hands-on design. Here are the details:",
+    "He's been busy! Here's a look at his work history:",
   ],
 
   skills: [
@@ -257,6 +264,8 @@ export const CONVERSATIONAL_PHRASES = {
     "UI/UX, front-end dev, product strategy... he's got it covered:",
     "Let's break down the skills that make Sandeep a well-rounded creator:",
     "Whether pixel-perfect design or clean code—here's his expertise:",
+    "He bridges the gap between design and dev. Here are his skills:",
+    "A true hybrid designer/developer. Check out his stack:",
   ],
 
   projects: [
@@ -272,6 +281,8 @@ export const CONVERSATIONAL_PHRASES = {
     "Take a look at these case studies from his design journey:",
     "From dashboards to mobile apps—here's what he's crafted:",
     "Curious about his work? These projects tell the story:",
+    "Here are a few things Sandeep has built recently:",
+    "Dive into these case studies to see his process in action:",
   ],
 
   contact: [
@@ -287,6 +298,8 @@ export const CONVERSATIONAL_PHRASES = {
     "Looking to work together? Here are the best ways to contact him:",
     "Email, LinkedIn, or carrier pigeon (okay, maybe not that last one):",
     "Got a project in mind? Let's talk—here's how:",
+    "Sandeep is always open to new opportunities. Say hi!",
+    "Don't be a stranger! Here's how to connect:",
   ],
 
   about: [
@@ -302,5 +315,7 @@ export const CONVERSATIONAL_PHRASES = {
     "Curious about the person behind the projects? Here you go:",
     "Designer by day, coder by night—meet Sandeep:",
     "Let's get to know the mind behind these designs:",
+    "Passion, precision, and pixel-perfection. Meet Sandeep:",
+    "Here's a little bit about the man behind the screen:",
   ],
 };

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Terminal, Send, User, Code, Briefcase, Mail } from "lucide-react";
+import { User, Code, Briefcase, Mail } from "lucide-react";
 
-import { Button } from "./ui/Button";
-import { Input } from "./ui/Input";
 import SuggestionChip from "./ui/SuggestionChip";
+import ChatInputBar from "./ui/ChatInputBar";
 
 const placeholders = [
   "Ask me anything...",
@@ -90,40 +89,15 @@ const InitialView = ({
         </div>
 
         <div className="w-full max-w-lg mx-auto space-y-4 sm:space-y-6 px-4 sm:px-0">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSendMessage(inputValue);
-            }}
-            className="relative group"
-          >
-            <div className="relative flex items-center w-full max-w-2xl bg-background/40 backdrop-blur-xl border border-white/10 rounded-full shadow-lg ring-1 ring-black/5 p-1.5 transition-all duration-300 focus-within:bg-background/60 focus-within:shadow-xl hover:border-zinc-500/20 hover:bg-background/50">
-              {/* Left Icon Container - perfectly circular and subtle */}
-              <div className="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-secondary/50 text-muted-foreground ring-1 ring-inset ring-white/10">
-                <Terminal size={18} strokeWidth={2} />
-              </div>
-
-              {/* Input - improved typography and spacing */}
-              <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder={placeholders[placeholderIndex]}
-                style={{ "--placeholder-opacity": fadeIn ? "1" : "0" }}
-                className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 px-4 text-base text-foreground placeholder:text-muted-foreground/70 font-normal tracking-tight h-full py-2"
-                autoFocus
-              />
-
-              {/* Submit Button - symmetrical to left icon, interactive states */}
-              <Button
-                type="submit"
-                size="icon"
-                disabled={!inputValue.trim()}
-                className="shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:scale-100"
-              >
-                <Send size={16} className={inputValue.trim() ? "" : ""} />
-              </Button>
-            </div>
-          </form>
+          <ChatInputBar
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            placeholder={placeholders[placeholderIndex]}
+            fadeIn={fadeIn}
+            onSubmit={handleSendMessage}
+            name="initial-chat-input"
+            id="initial-chat-input"
+          />
 
           <div className="flex flex-wrap justify-center gap-2">
             {SUGGESTIONS.map((suggestion, index) => (
