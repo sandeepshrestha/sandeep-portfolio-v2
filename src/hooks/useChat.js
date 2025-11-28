@@ -88,7 +88,7 @@ export const useChat = () => {
     }
     if (
       query.match(
-        /\b(skill|stack|tech|languages|frameworks|tools|abilities|expertise|coding)\b/
+        /\b(skill|skills|stack|tech|languages|frameworks|tools|abilities|expertise|coding)\b/
       )
     ) {
       responses.push({ type: "text", content: getRandomResponse("skills") });
@@ -97,7 +97,7 @@ export const useChat = () => {
     }
     if (
       query.match(
-        /\b(project|build|portfolio|work|app|website|design|case study|showcase)\b/
+        /\b(project|projects|build|portfolio|work|app|website|design|case study|showcase)\b/
       )
     ) {
       responses.push({ type: "text", content: getRandomResponse("projects") });
