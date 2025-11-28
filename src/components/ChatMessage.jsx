@@ -9,6 +9,7 @@ import SkillsMessage from "./chat-message/SkillsMessage";
 import ProjectsMessage from "./chat-message/ProjectsMessage";
 import ProjectDetailMessage from "./chat-message/ProjectDetailMessage";
 import ContactMessage from "./chat-message/ContactMessage";
+import DownloadMessage from "./chat-message/DownloadMessage";
 
 const ChatMessage = ({ msg }) => {
   const [showToast, setShowToast] = useState(false);
@@ -54,6 +55,9 @@ const ChatMessage = ({ msg }) => {
             copyEmailToClipboard={copyEmailToClipboard}
           />
         );
+
+      case "download":
+        return <DownloadMessage msg={msg} />;
 
       default:
         return null;

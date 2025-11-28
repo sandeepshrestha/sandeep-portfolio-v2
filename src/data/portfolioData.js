@@ -1,6 +1,9 @@
+import resumeFile from "../assets/Product designer - Sandeep Shrestha.pdf";
+
 export const PORTFOLIO_DATA = {
   intro:
     "Hello. I am Sandeep Shrestha's portfolio interface. I can tell you about his work as a Senior Product UI/UX Designer, his startup Space Chimp Academy, or his design process.",
+  resume: resumeFile,
   about: {
     role: "Senior Product UI/UX Designer | Founder",
     location: "Kathmandu, Nepal",
@@ -317,5 +320,12 @@ export const CONVERSATIONAL_PHRASES = {
     "Let's get to know the mind behind these designs:",
     "Passion, precision, and pixel-perfection. Meet Sandeep:",
     "Here's a little bit about the man behind the screen:",
+  ],
+  resume: [
+    "Here is the link to download Sandeep's CV:",
+    "You can download his resume here:",
+    "Here is the PDF version of his CV:",
+    "Click below to get the full resume:",
+    "Here's the document you requested:",
   ],
 };

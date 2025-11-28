@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { User, Briefcase, Cpu, Code, Mail } from "lucide-react";
+import { User, Briefcase, Cpu, Code, Mail, Download } from "lucide-react";
 import SuggestionChip from "./ui/SuggestionChip";
 import ChatInputBar from "./ui/ChatInputBar";
 
@@ -55,6 +55,11 @@ const ChatInput = ({
               onClick={() => handleSendMessage("Tell me about Sandeep")}
             />
             <SuggestionChip
+              label="Projects"
+              icon={Code}
+              onClick={() => handleSendMessage("Show me his projects")}
+            />
+            <SuggestionChip
               label="Experience"
               icon={Briefcase}
               onClick={() => handleSendMessage("What is his experience?")}
@@ -67,14 +72,14 @@ const ChatInput = ({
               }
             />
             <SuggestionChip
-              label="Projects"
-              icon={Code}
-              onClick={() => handleSendMessage("Show me his projects")}
-            />
-            <SuggestionChip
               label="Contact"
               icon={Mail}
               onClick={() => handleSendMessage("How can I contact him?")}
+            />
+            <SuggestionChip
+              label="Download CV"
+              icon={Download}
+              onClick={() => handleSendMessage("Download CV")}
             />
           </div>
         )}
