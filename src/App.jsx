@@ -6,7 +6,7 @@ import { useTheme } from "./components/ThemeProvider";
 import { useChat } from "./hooks/useChat";
 
 export default function App() {
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const {
     messages,
     inputValue,
@@ -28,6 +28,7 @@ export default function App() {
           setInputValue={setInputValue}
           handleSendMessage={handleSendMessage}
           theme={theme}
+          setTheme={setTheme}
         />
       ) : (
         <ChatLayout

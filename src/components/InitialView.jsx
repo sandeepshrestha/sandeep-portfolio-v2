@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { User, Code, Briefcase, Mail, Download } from "lucide-react";
+import { User, Code, Briefcase, Mail, Download, Sun, Moon } from "lucide-react";
 
 import SuggestionChip from "./ui/SuggestionChip";
 import ChatInputBar from "./ui/ChatInputBar";
@@ -34,6 +34,8 @@ const InitialView = ({
   inputValue,
   setInputValue,
   handleSendMessage,
+  theme,
+  setTheme,
 }) => {
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
@@ -53,7 +55,7 @@ const InitialView = ({
 
   return (
     <div
-      className={`flex-1 flex flex-col items-center justify-center p-4 sm:p-6 transition-all duration-700 absolute inset-0 z-40 ${
+      className={`flex-1 flex flex-col items-center justify-center p-4 sm:p-6 transition-all duration-700 absolute inset-0 z-40 overflow-hidden ${
         hasStarted
           ? "opacity-0 pointer-events-none scale-95"
           : "opacity-100 scale-100"
@@ -122,6 +124,17 @@ const InitialView = ({
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Footer Theme Toggle */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center">
+        <button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="p-2 rounded-full bg-background/20 backdrop-blur-sm border border-border/50 text-foreground/80 hover:bg-background/40 transition-colors"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
       </div>
     </div>
   );
